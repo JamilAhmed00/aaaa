@@ -1,44 +1,59 @@
 ---
-title: Backend Developer Roadmap: Build a Scalable Task Management API
+title: Backend API Development for a Blogging Platform
 ---
 
-# Backend Developer Roadmap: Build a Scalable Task Management API
+# Backend API Development for a Blogging Platform
 
-## Description
+Your task is to develop a backend API for a blogging platform with the following features: user authentication and authorization, CRUD operations for blog posts and comments, and comprehensive error handling. The system must connect to a relational database (PostgreSQL or MySQL). Additionally, middleware for request validation and logging must be implemented. Ensure the API adheres to RESTful principles and includes unit tests for the critical functionalities.
 
-Your task is to create a backend API for a task management system that allows users to register, log in, and manage tasks. The system should include user authentication with role-based access control (RBAC), CRUD operations for tasks, middleware for input validation and logging, and proper error handling. Additionally, implement unit testing for major functionalities and deploy the application.
+## Endpoints to be Implemented:
 
-### Features to Implement:
+```plaintext
+1. POST /register - Register a new user.
+2. POST /login - Authenticate a user and return a JWT token.
+3. GET /posts - Fetch all blog posts.
+4. POST /posts - Create a new blog post (Authenticated users only).
+5. GET /posts/:id - Fetch a single blog post by ID.
+6. PUT /posts/:id - Update a blog post (Owner only).
+7. DELETE /posts/:id - Delete a blog post (Owner only).
+8. POST /posts/:id/comments - Add a comment to a blog post (Authenticated users only).
+9. GET /posts/:id/comments - Fetch all comments for a blog post.
+```
 
-1. **User Registration and Login**:
-   - POST /register - Register a new user.
-   - POST /login - Authenticate a user and return a JWT token.
+## Constraints:
 
-2. **Task Management**:
-   - GET /tasks - Get all tasks (admin only).
-   - POST /tasks - Create a new task (authenticated users only).
-   - GET /tasks/:id - Get a specific task by ID.
-   - PUT /tasks/:id - Update a task (owner only).
-   - DELETE /tasks/:id - Delete a task (owner only).
-
-3. **Middleware**:
-   - Input validation for all endpoints.
-   - Logging of all requests.
-
-4. **Error Handling**:
-   - Handle common HTTP status codes like 401, 403, 404, and 500.
-
-5. **Testing**:
-   - Write unit tests for user registration, login, and task CRUD operations.
-
-6. **Deployment**:
-   - Deploy the application using a cloud service (e.g., Heroku, AWS, or Azure).
-
-### Constraints:
 - Use Node.js with Express.js for the backend.
 - Use PostgreSQL or MySQL for the database.
 - Use JWT for authentication.
-- Implement RBAC to distinguish between admin and regular users.
-- Write clean, modular, and reusable code.
+- Follow RESTful API design principles.
+- Ensure proper validation for all inputs.
+- Include unit tests for at least 5 major functionalities using a testing library (e.g., Jest, Mocha).
+
+## Example Registration Request:
+
+```json
+POST /register
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "securepassword123"
+}
+```
+
+## Example Blog Post Creation:
+
+```json
+POST /posts
+Headers: { Authorization: "Bearer <JWT_TOKEN>" }
+Body:
+{
+  "title": "My First Blog Post",
+  "content": "This is the content of my first blog post."
+}
+```
+
+## Goal:
+
+Build the backend system that meets all the requirements listed below and passes all test cases.
 
 ---
